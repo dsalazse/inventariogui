@@ -1,4 +1,4 @@
-package com.cipres.model;
+package com.cipres.application.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,13 +11,13 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 @Data
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Dato {
+public class Grupo {
     private Long id;
     private String descripcion;
     private Long compania;
 
     @JsonCreator
-    public Dato(@JsonProperty("id") Long id, 
+    public Grupo(@JsonProperty("id") Long id, 
                 @JsonProperty("descripcion") String descripcion, 
                 @JsonProperty("compania") Long compania) {
         this.id = id;
@@ -52,4 +52,5 @@ public class Dato {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+    
 }

@@ -1,2 +1,2 @@
 # inventariogui
-the great 
+servicio inventario para Cipres - GUI vaadin

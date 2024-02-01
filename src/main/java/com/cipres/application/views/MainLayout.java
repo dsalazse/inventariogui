@@ -4,6 +4,7 @@ import com.cipres.application.control.TranslatorService;
 import com.cipres.application.views.about.AboutView;
 import com.cipres.application.views.helloworld.HelloWorldView;
 import com.cipres.application.views.tablas.DatoView;
+import com.cipres.application.views.tablas.GrupoView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.Footer;
@@ -56,6 +57,9 @@ public class MainLayout extends AppLayout {
         addToDrawer(header, scroller, createFooter());
     }
 
+    /**
+     * @return
+     */
     private SideNav createNavigation() {
         SideNav nav = new SideNav();
                 
@@ -67,6 +71,7 @@ public class MainLayout extends AppLayout {
         nav.addItem(new SideNavItem(opcion1, HelloWorldView.class, LineAwesomeIcon.GLOBE_SOLID.create()));
         nav.addItem(new SideNavItem(opcion2, AboutView.class, LineAwesomeIcon.FILE.create()));
         nav.addItem(new SideNavItem(datoCrud, DatoView.class, LineAwesomeIcon.TABLETS_SOLID.create()));
+        nav.addItem(new SideNavItem(grupoCrud, GrupoView.class, LineAwesomeIcon.TABLETS_SOLID.create()));
 
         return nav;
     }

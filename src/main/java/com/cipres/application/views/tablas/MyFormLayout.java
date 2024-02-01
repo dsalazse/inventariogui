@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.cipres.application.control.TranslatorService;
 import com.cipres.application.control.ValidationMessage;
-import com.cipres.model.Dato;
+import com.cipres.application.model.Dato;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
