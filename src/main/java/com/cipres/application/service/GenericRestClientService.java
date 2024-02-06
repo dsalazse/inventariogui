@@ -32,7 +32,6 @@ public class GenericRestClientService {
 
     public <T> List<T>   findAll(Class<T[]> classObject, String endPoint) {
         String apiUrl = appUrl + endPoint;
-        List<T> lista = null;
         T[] datos= null; 
         try {
             RestTemplate restTemplate = new RestTemplate();
@@ -40,8 +39,6 @@ public class GenericRestClientService {
 
             if (responseEntity.getStatusCode().is2xxSuccessful()) {
                 datos = convertJSONToObject(responseEntity.getBody(),classObject);
-                log.info("Este es el valor devuelto por <T> List<T>: " + datos);
-                log.info("Este es el valor devuelto por List<T> lista: " + lista);
                 return new ArrayList<>(Arrays.asList(datos));
             } else {
                 log.error("Error al intentar obtener datos de: " + apiUrl);
@@ -50,10 +47,8 @@ public class GenericRestClientService {
         } catch (Exception e) {
             log.error("Error: " + e.getMessage() + " al intentar obtener datos de: " + apiUrl);
             return new ArrayList<>();
-        }
-        
+        }        
     }
-
 
 
     public <T> T save(T object, Class<T> classObject, String endPoint) {

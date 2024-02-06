@@ -2,6 +2,9 @@ package com.cipres.application.views.tablas;
 
 
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.vaadin.crudui.crud.impl.GridCrud;
@@ -11,6 +14,8 @@ import com.cipres.application.control.TranslatorService;
 import com.cipres.application.model.Grupo;
 import com.cipres.application.service.GenericRestClientService;
 import com.cipres.application.views.MainLayout;
+import com.flowingcode.vaadin.addons.gridexporter.GridExporter;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -56,7 +61,7 @@ public class GrupoView extends VerticalLayout{
 
              // layout configuration
             setSizeFull();
-            add(crud);
+            
             crud.setFindAllOperationVisible(false);
 
             // logic configuration
@@ -67,7 +72,7 @@ public class GrupoView extends VerticalLayout{
                 grupo -> {
                     if (grupo.getId().equals(0L)){
                         try {
-                            throw new Exception("pailas");
+                            throw new Exception("ID error no puede ser cero (0)");
                         } catch (Exception e) {
                             log.info("Se presento error: " + e.getMessage());
                         }
@@ -76,6 +81,14 @@ public class GrupoView extends VerticalLayout{
                 },
                 grupo -> grupoService.delete(grupo.getId(),endPoint)
             );
+            //exportador
+            GridExporter<Grupo> exporter = GridExporter.createFor(crud.getGrid());
+            //exporter.setExportValue(budgetCol, item -> "" + item.getBudget());
+            //exporter.setColumnPosition("id", 1);
+            exporter.setTitle("Información de Grupo");
+            exporter.setFileName(
+                "Grupo" + new SimpleDateFormat("yyyyddMM").format(Calendar.getInstance().getTime()));               
+             
+            add(crud);               
     }        
-    
 }

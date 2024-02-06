@@ -68,7 +68,7 @@ public class DatoView extends VerticalLayout {
                 dato -> {
                     if (dato.getId().equals(0L)){
                         try {
-                            throw new Exception("pailas");
+                            throw new Exception("ID error no puede ser cero (0)");
                         } catch (Exception e) {
                             log.info("Se presento error: " + e.getMessage());
                         }
